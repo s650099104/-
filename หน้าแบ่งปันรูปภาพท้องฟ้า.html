@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>แชร์รูปภาพที่ผลต่อใจกันนนนนน</title>
+    <style>
+        body {
+             font-family: Arial, sans-serif;
+             font-size: 30px;
+			 color:#F6C8B6;
+             margin: 0px; 
+             padding: 0;
+             height: 100vh; 
+            background: linear-gradient(to bottom,#673ab7, #e1bee7,#f06292,#f48fb1);
+            text-align: center;
+        }
+        .content {
+            background:none;
+            text-align: center;
+            padding: none;
+            margin: 10px 0;
+            border-radius: 15px;
+            box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        .back-btn, .upload-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-btn:hover, .upload-btn:hover {
+            background-color: #218838;
+        }
+        .image-preview {
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>&#129344;แชร์รูปภาพที่ผลต่อใจกันนนนนน</h2>
+	<img src="IMG20250110183222.jpg"; style="width: 70%; max-width: 350px;">
+	<img src="IMG20250201182701.jpg"; style="width: 70%; max-width: 350px;">
+	<img src="IMG20250123182427.jpg"; style="width: 70%; max-width: 350px;">
+	<img src="IMG20250110135519.jpg"; style="width: 70%; max-width: 350px;">
+    <div id="postDetail" class="content">
+        <!-- รายละเอียดโพสต์จะแสดงที่นี่ -->
+    </div>
+
+    <!-- ช่องอัพโหลดรูปภาพ -->
+    <input type="file" id="imageUpload" class="upload-btn" accept="image/*">
+    <button class="upload-btn" onclick="uploadImage()">อัพโหลดรูปภาพ</button>
+    <img id="imagePreview" class="image-preview" alt="ภาพตัวอย่าง">
+
+   
+
+    <script>
+        // ดึงข้อมูลจาก URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('postId'); // รับ postId จาก URL
+
+        // โหลดโพสต์จาก localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            let posts = JSON.parse(localStorage.getItem("posts")) || [];
+            let post = posts[postId]; // ดึงโพสต์จาก index ที่ส่งมา
+
+            if (post) {
+                // แสดงรายละเอียดโพสต์
+                let postDetail = document.getElementById('postDetail');
+                postDetail.innerHTML = `
+                    <h3>${post.name}</h3>
+                    <p>${post.text}</p>
+                    <img src="${post.imageURL}" alt="โพสต์รูปภาพ" style="max-width: 100%; height: auto;">
+                `;
+            } else {
+                alert('โพสต์ไม่พบ');
+            }
+        });
+
+        // ฟังก์ชันสำหรับอัพโหลดรูปภาพ
+        function uploadImage() {
+            const fileInput = document.getElementById('imageUpload');
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // แสดงภาพที่อัพโหลด
+                    document.getElementById('imagePreview').src = e.target.result;
+                    alert("อัพโหลดรูปภาพสำเร็จ");
+                };
+                reader.readAsDataURL(file);
+            } else {
+                alert("กรุณาเลือกไฟล์รูปภาพก่อน");
+            }
+        }
+    </script>
+	<br>
+</body>
+</html>
