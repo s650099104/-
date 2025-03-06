@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แสดงความคิดเห็น</title>
+    <style>
+        body { 
+		font-family: Arial, sans-serif;
+    font-size: 40px; /* เพิ่มขนาดฟอนต์ของข้อความใน body */
+    margin: 0px; 
+    padding: 0;
+    height: 100vh; 
+    background: linear-gradient(to bottom, #9292D1, #0277bd, #ff8a65, #9575cd);
+	}
+	p {
+    font-size: 24px; /* เพิ่มขนาดฟอนต์ของข้อความใน <p> */
+	color:#1a237e;
+}
+
+h1, h2 {
+    font-size: 24px; /* เพิ่มขนาดฟอนต์ของหัวข้อ */
+	color:#1a237e;
+}
+        .comments { margin-top: 10px; }
+        .comment, .reply { 
+            background:none; 
+            padding:none; 
+            margin: 5px 0; 
+            border-left:none; 
+            position: relative; 
+        }
+        .reply { margin-left:none; background:none; border-left:none; }
+        .delete-button {
+            margin-left: 10px;
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        .home-button {
+            margin-top: 20px;
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<body>
+    <h2 align="center" >&#128302;เวทมนต์ของท้องฟ้า</h2>
+	&nbsp;&nbsp;&nbsp;
+	<img src="IMG20250123182605.jpg"; style="width: 70%; max-width: 350px;">
+	<img src="IMG20250123182814.jpg"; style="width: 70%; max-width: 350px;">
+	<img src="IMG20250201183439.jpg"; style="width: 70%; max-width: 350px;">
+	<img src="IMG20250201183452.jpg"; style="width: 70%; max-width: 350px;">
+	
+	
+	
+    <p align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;เวทมนต์ของท้องฟ้าเป็นความรู้สึกที่ลึกลับและท้าทายจินตนาการ มันเหมือนกับการมองเห็นบางสิ่งที่ไม่สามารถเข้าใจได้ทั้งหมด แต่กลับรู้สึกได้ถึงพลังที่ซ่อนอยู่ ท้องฟ้าที่เปลี่ยนแปลงตามเวลา ทั้งตอนเช้าที่แสงสีทองลอยมาถึง ตลอดจนความมืดของกลางคืนที่มีแสงดาวกระพริบไปทั่ว เป็นเหมือนการบอกเล่าเรื่องราวที่ไม่มีคำพูด แต่ทำให้ใจรู้สึกถึงความสงบและความกว้างใหญ่
+
+บางครั้งเมื่อมองไปที่ท้องฟ้า เราจะรู้สึกเหมือนโลกนี้ยังคงมีอะไรใหม่ๆ ที่รอให้เราได้ค้นพบ เสมือนว่าเรากำลังได้สัมผัสกับบางสิ่งที่พิเศษและไร้ขอบเขต มันทำให้เราได้รู้สึกถึงความเป็นหนึ่งเดียวกับธรรมชาติ และเข้าใจถึงความงดงามในความเรียบง่าย
+
+ท้องฟ้าทำให้เราได้รู้สึกถึงอิสรภาพและความเป็นไปได้ที่ไม่มีที่สิ้นสุด มันเป็นเหมือนเวทมนต์ที่ช่วยเติมเต็มจิตใจให้เรามีพลังที่จะก้าวต่อไป แม้ว่าจะเจออุปสรรคมากมายในชีวิตก็ตาม</p>
+	<p align="center"> "ทุกคนเคยมองไปท้องฟ้ากันไหม แล้วเวลามองให้ความรู้สึกอย่างไร สามารถแชร์ความรู้สึกนั้นให้กันฟังหน่อยค่ะ"</p>
+   
+    <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;แสดงความคิดเห็น</h1>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="commentInput" type="text" placeholder="พิมพ์ความคิดเห็นแล้วกด Enter..." style="width:35%;"></p>
+    <div id="comments" class="comments">
+	
+	</div>
+
+    <!-- ปุ่มกลับไปหน้าแรก -->
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <button class="home-button" onClick="goHome() "> กลับไปหน้าแรก</button>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            loadComments();
+        });
+
+        document.getElementById("commentInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") { 
+                addComment(this.value);
+                this.value = "";
+            }
+        });
+
+        function addComment(text, parentId = null) {
+            if (!text.trim()) return;
+
+            let comments = JSON.parse(localStorage.getItem("comments")) || [];
+            let newComment = { id: Date.now(), text, parentId };
+            comments.push(newComment);
+            localStorage.setItem("comments", JSON.stringify(comments));
+
+            renderComments();
+        }
+
+        function deleteComment(commentId) {
+            let comments = JSON.parse(localStorage.getItem("comments")) || [];
+            comments = comments.filter(comment => comment.id !== commentId && comment.parentId !== commentId);
+            localStorage.setItem("comments", JSON.stringify(comments));
+
+            renderComments();
+        }
+
+        function renderComments() {
+            let comments = JSON.parse(localStorage.getItem("comments")) || [];
+            let commentsContainer = document.getElementById("comments");
+            commentsContainer.innerHTML = "";
+
+            function createCommentElement(comment) {
+                let commentDiv = document.createElement("div");
+                commentDiv.classList.add(comment.parentId ? "reply" : "comment");
+                commentDiv.innerText = comment.text;
+
+                let deleteButton = document.createElement("button");
+                deleteButton.innerText = "ลบ";
+                deleteButton.classList.add("delete-button");
+                deleteButton.onclick = function() {
+                    deleteComment(comment.id);
+                };
+
+                let replyInput = document.createElement("input");
+                replyInput.setAttribute("type", "text");
+                replyInput.setAttribute("placeholder", "ตอบกลับ... (กด Enter)");
+                replyInput.classList.add("replyInput");
+
+                replyInput.addEventListener("keypress", function(event) {
+                    if (event.key === "Enter") {
+                        addComment(replyInput.value, comment.id);
+                        replyInput.value = "";
+                    }
+                });
+
+                commentDiv.appendChild(deleteButton);
+                commentDiv.appendChild(document.createElement("br"));
+                commentDiv.appendChild(replyInput);
+
+                return commentDiv;
+            }
+
+            let commentMap = {};
+            comments.forEach(comment => {
+                commentMap[comment.id] = createCommentElement(comment);
+            });
+
+            comments.forEach(comment => {
+                if (comment.parentId && commentMap[comment.parentId]) {
+                    commentMap[comment.parentId].appendChild(commentMap[comment.id]);
+                } else {
+                    commentsContainer.appendChild(commentMap[comment.id]);
+                }
+            });
+        }
+
+        function loadComments() {
+            renderComments();
+        }
+
+        function goHome() {
+            window.location.href = "index.html"; // เปลี่ยนเป็น URL ที่ต้องการ
+        }
+    </script>
+</body>
+</html>
+

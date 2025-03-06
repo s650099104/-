@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แสดงความคิดเห็น</title>
+    <style>
+       body { 
+        font-family: Arial, sans-serif;
+        font-size: 40px;
+        margin: 0px; 
+        padding: 0;
+        height: 100vh; 
+        background: linear-gradient(to bottom, #78A3D4, #ECBDC4, #FF9967, #00bcd4);
+    }
+    p {
+        font-size: 24px; /* ขนาดฟอนต์ข้อความ */
+        color:#1a237e;
+        text-align: center; /* จัดข้อความให้ตรงกลาง */
+        padding: 20px; /* เว้นระยะจากขอบ */
+        margin: 0 auto; /* เว้นระยะจากขอบด้านข้าง */
+        max-width: 90%; /* จำกัดความกว้างของข้อความ */
+    }
+    h1, h2 {
+        font-size: 24px;
+        color:#1a237e;
+    }
+        .comments { margin-top: 10px; }
+        .comment, .reply { 
+            background:none; 
+            padding:none; 
+            margin: 5px 0; 
+            border-left: 3px solid #007BFF; 
+            position: relative; 
+        }
+        .reply { margin-left: 20px; background:none; border-left: 3px solid #28a745; }
+        .delete-button {
+            margin-left: 10px;
+            background: red;
+            color: white;
+            border: none;
+            padding: none;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        .home-button {
+            margin-top: 20px;
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<body>
+    <h2 align="center" >&#127804;การเดินทางของเรื่องราว</h2>
+	&nbsp;&nbsp;&nbsp;
+	<img src="IMG20250123182812.jpg"; style="width: 70%; max-width: 350px;">
+	<img  src="IMG20250123182814.jpg"; style="width: 70%; max-width: 350px;">
+	<img src="IMG20250123182427.jpg"; style="width: 70%; max-width: 350px;">
+	<img src="IMG20250201182701.jpg"; style="width: 70%; max-width: 350px;">
+	
+	
+    <p align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;การเดินทางของเรื่องราวในท้องฟ้ายามเย็นนั้นเปรียบเสมือนการเดินทางของชีวิตที่เต็มไปด้วยการเปลี่ยนแปลงและการค้นพบใหม่ๆ &nbsp;&nbsp;ท้องฟ้าสีส้มอมชมพูและสีฟ้าเข้มที่ค่อยๆ              เปลี่ยนแปลงเมื่อเวลาผ่านไปทำให้เรารู้สึกเหมือนกำลังเดินทางจากช่วงเวลาหนึ่งไปสู่อีกช่วงเวลาหนึ่งอย่างเงียบสงบ 
+	ความรู้สึกของการเดินทางนั้นไม่ได้เร่งรีบ แต่กลับเต็มไปด้วยความละเมียดละไม</p>
+	<p>&nbsp;&nbsp;&nbsp;ท้องฟ้ายามเย็นที่ค่อยๆ เปลี่ยนสี ทำให้เรารู้สึกถึงการเปลี่ยนแปลงที่ไม่มีวันหยุดนิ่งเหมือนการเดินทางของชีวิต ทุกก้าวย่างมีความหมายและเต็มไปด้วยการเรียนรู้ 
+	การเดินทางในตอนเย็นนี้ไม่ได้มุ่งหมายไปถึงจุดหมายใด แต่มันคือการรับรู้ถึงความงดงามของการเดินทางนั้นเอง โดยไม่จำเป็นต้องรีบร้อนเพียงแค่ปล่อยให้ตัวเองได้สัมผัสกับสิ่งที่เกิดขึ้นในขณะนั้น</p>
+	<p>&nbsp;&nbsp;&nbsp;เมื่อมองท้องฟ้ายามเย็น เรารู้สึกเหมือนกับการเดินทางผ่านช่วงเวลาของชีวิต ทั้งแสงที่เคลื่อนไหวไปและเมฆที่ลอยผ่านไปทีละก้อน 
+	ล้วนทำให้เราเข้าใจว่า ทุกเรื่องราวที่เกิดขึ้นล้วนมีจังหวะของมันเอง ความสุข ความเศร้า หรือความหวัง ล้วนเป็นส่วนหนึ่งของการเดินทางที่ทำให้ชีวิตมีความหมายในท้ายที่สุด</p>
+   
+    <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;แสดงความคิดเห็น</h1>
+    <p><input id="commentInput" type="text" placeholder="พิมพ์ความคิดเห็นแล้วกด Enter..." style="width:35%;"></p>
+    <div id="comments" class="comments">
+	
+	</div>
+
+    <!-- ปุ่มกลับไปหน้าแรก -->
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <blockquote>
+            <blockquote>
+              <blockquote>
+                <blockquote>
+                  <blockquote>
+                    <button class="home-button" onClick="goHome() "> กลับไปหน้าแรก</button>
+                  </blockquote>
+                </blockquote>
+              </blockquote>
+            </blockquote>
+          </blockquote>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            loadComments();
+        });
+
+        document.getElementById("commentInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") { 
+                addComment(this.value);
+                this.value = "";
+            }
+        });
+
+        function addComment(text, parentId = null) {
+            if (!text.trim()) return;
+
+            let comments = JSON.parse(localStorage.getItem("comments")) || [];
+            let newComment = { id: Date.now(), text, parentId };
+            comments.push(newComment);
+            localStorage.setItem("comments", JSON.stringify(comments));
+
+            renderComments();
+        }
+
+        function deleteComment(commentId) {
+            let comments = JSON.parse(localStorage.getItem("comments")) || [];
+            comments = comments.filter(comment => comment.id !== commentId && comment.parentId !== commentId);
+            localStorage.setItem("comments", JSON.stringify(comments));
+
+            renderComments();
+        }
+
+        function renderComments() {
+            let comments = JSON.parse(localStorage.getItem("comments")) || [];
+            let commentsContainer = document.getElementById("comments");
+            commentsContainer.innerHTML = "";
+
+            function createCommentElement(comment) {
+                let commentDiv = document.createElement("div");
+                commentDiv.classList.add(comment.parentId ? "reply" : "comment");
+                commentDiv.innerText = comment.text;
+
+                let deleteButton = document.createElement("button");
+                deleteButton.innerText = "ลบ";
+                deleteButton.classList.add("delete-button");
+                deleteButton.onclick = function() {
+                    deleteComment(comment.id);
+                };
+
+                let replyInput = document.createElement("input");
+                replyInput.setAttribute("type", "text");
+                replyInput.setAttribute("placeholder", "ตอบกลับ... (กด Enter)");
+                replyInput.classList.add("replyInput");
+
+                replyInput.addEventListener("keypress", function(event) {
+                    if (event.key === "Enter") {
+                        addComment(replyInput.value, comment.id);
+                        replyInput.value = "";
+                    }
+                });
+
+                commentDiv.appendChild(deleteButton);
+                commentDiv.appendChild(document.createElement("br"));
+                commentDiv.appendChild(replyInput);
+
+                return commentDiv;
+            }
+
+            let commentMap = {};
+            comments.forEach(comment => {
+                commentMap[comment.id] = createCommentElement(comment);
+            });
+
+            comments.forEach(comment => {
+                if (comment.parentId && commentMap[comment.parentId]) {
+                    commentMap[comment.parentId].appendChild(commentMap[comment.id]);
+                } else {
+                    commentsContainer.appendChild(commentMap[comment.id]);
+                }
+            });
+        }
+
+        function loadComments() {
+            renderComments();
+        }
+
+        function goHome() {
+            window.location.href = "index.html"; // เปลี่ยนเป็น URL ที่ต้องการ
+        }
+    </script>
+</body>
+</html>
+
+
+
+

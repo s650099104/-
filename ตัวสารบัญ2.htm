@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>หน้าแรก</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: Purple;
+            margin: 20px;
+            height: 100vh;
+            background: linear-gradient(to bottom, #78A3D4, #ECBDC4, #FF9967, #B19CD8);
+            padding: 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+        }
+        .content {
+            background: linear-gradient(to bottom, #FFE8BF, #FFF4C7);
+            text-align: center;
+            padding: 30px;
+            margin: 10px 0;
+            border-radius: 15px;
+            box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        .load-more {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .load-more:hover {
+            background-color: #0056b3;
+        }
+        .style1 {
+            font-size: 60px;
+            font-weight: bold;
+        }
+        .style2 {
+            font-size: 36px;
+        }
+        .share-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .share-btn:hover {
+            background-color: #218838;
+        }
+    </style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<body>
+
+    <h2>หน้าแรกของ Home</h2>
+    <div class="container">
+        <div class="content">ความสดใสของท้องฟ้า</div>
+        <div class="content">เวทมนต์ของท้องฟ้า</div>
+        <div class="content">ความสบายใจ</div>
+        <div class="content">ผ่อนคลายเมื่อได้มอง</div>
+        <div class="content">ความลงตัวที่ไม่มีที่สิ้นสุด</div>
+        <div class="content">การเดินทางของเรื่องราว</div>
+        <div class="content">ท้องฟ้าอาจพาให้คิดถึงใครสักคน</div>
+        <!-- ปุ่มเพื่อไปหน้าการแชร์รูปภาพ -->
+        <button class="share-btn" onclick="window.location.href='หน้าแบ่งปันรูปภาพท้องฟ้า.html'">แชร์รูปภาพ</button>
+    </div>
+
+    <script>
+        let count = 4;
+        function loadMore() {
+            let container = document.querySelector('.container');
+            let contents = document.querySelectorAll('.content');
+			
+
+            if (contents.length >= 10) {
+                alert('ไม่สามารถเพิ่มข้อมูลได้เกิน 10 กล่อง');
+                return;
+            }
+			function goToPostDetail(postId) {
+            window.location.href = `post_detail.html?postId=${postId}`; // ส่ง postId ไปยัง URL
+        }
+
+        // ตัวอย่างการแชร์โพสต์โดยใช้ localStorage
+        let posts = [];
+
+            for (let i = 0; i < 3; i++) {
+                if (document.querySelectorAll('.content').length >= 10) break;
+                let newContent = document.createElement('div');
+                newContent.className = 'content';
+                newContent.innerText = `เนื้อหาที่ ${count++}`;
+                newContent.addEventListener('click', function() {
+                    window.location.href = 'comment_page.html'; // ลิงก์ไปยังหน้าความคิดเห็น
+                });
+                // เก็บข้อมูลโพสต์ใน localStorage
+        localStorage.setItem("posts", JSON.stringify(posts));
+            }
+        }
+		
+
+        // เชื่อมโยงเนื้อหาไปยังหน้าต่างๆ
+        document.addEventListener("DOMContentLoaded", function() {
+            let contents = document.querySelectorAll('.content');
+
+            if (contents.length > 0) { 
+                contents[0].addEventListener('click', function() {
+                    window.location.href = 'หน้าแรก.html'; // ลิงก์ไปยังหน้าแรก
+                });
+            }
+            if (contents.length > 1) { 
+                contents[1].addEventListener('click', function() {
+                    window.location.href = 'หน้าที่ 2.html'; 
+                });
+            }
+
+            if (contents.length > 2) { 
+                contents[2].addEventListener('click', function() {
+                    window.location.href = 'หน้าที่3.html'; 
+                });
+            }
+
+            if (contents.length > 3) { 
+                contents[3].addEventListener('click', function() {
+                    window.location.href = 'หน้าที่ 4.html'; 
+                });
+            }
+
+            if (contents.length > 4) { 
+                contents[4].addEventListener('click', function() {
+                    window.location.href = 'หน้าที่ 5.html'; 
+                });
+            }
+
+            if (contents.length > 5) { 
+                contents[5].addEventListener('click', function() {
+                    window.location.href = 'หน้าที่ 6.html'; 
+                });
+            }
+
+            if (contents.length > 6) { 
+                contents[6].addEventListener('click', function() {
+                    window.location.href = 'หน้าที่ 7.html'; 
+                });
+            }
+        });
+		 
+
+        
+    </script>
+</body>
+</html>
